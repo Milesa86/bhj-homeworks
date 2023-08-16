@@ -17,6 +17,10 @@ class Game {
   }
 
   registerEvents() {
+    document.addEventListener('keydown', (event) => {
+      const currentSymbol = this.currentSymbol.textContent;
+     currentSymbol === event.key ? this.success() : this.fail();
+    })
     /*
       TODO:
       Написать обработчик события, который откликается
