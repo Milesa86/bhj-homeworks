@@ -1,8 +1,8 @@
 const input = document.getElementById('task__input')
 const tasksList = document.getElementById('tasks__list')
-const form = document.getElementById('tasks__form')
+const addButton = document.querySelector(".tasks__add");
 
-form.addEventListener('submit', (e) => {
+addButton.addEventListener('click', (e) => {
     e.preventDefault();
     const text = input.value.trim();
     if (text !== '') {
@@ -15,8 +15,8 @@ form.addEventListener('submit', (e) => {
             </div>`;
         tasksList.insertAdjacentHTML('beforeEnd', newTaskElem)
         input.value = '';
-
-        tasks.querySelector('.task__remove').addEventListener('click', event => {
+        let removeBtn = tasksList.lastElementChild.querySelector('.task__remove')
+        removeBtn.addEventListener('click', event => {
             event.target.closest('.task').remove();
         });
     }
