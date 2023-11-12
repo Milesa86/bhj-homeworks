@@ -3,25 +3,23 @@ const cartProducts = document.querySelector('.cart__products')
 
 
 for (product of products) {
-    let controlButton = product.querySelectorAll('.product__quantity-control')
+    let decBtn = product.querySelector('.product__quantity-control.product__quantity-control_dec');
+    let incDtn = product.querySelector('.product__quantity-control.product__quantity-control_inc');
     let quantity = product.querySelector('.product__quantity-value');
     let addToCartBtn = product.querySelector('.product__add');
     let img = product.querySelector('.product__image').src;
     let idProduct = product.getAttribute('data-id');
 
-    controlButton.forEach(function (button) {
-        button.addEventListener('click', (e) => {
-            if(e.target.classList.contains('product__quantity-control_dec')) {
-                if (parseInt(quantity.innerText) > 1) {
-                    quantity.innerText = parseInt(quantity.innerText) - 1
-                }
-            }
-            if(e.target.classList.contains('product__quantity-control_inc')) {
-                quantity.innerText = parseInt(quantity.innerText) + 1
-            }
+   decBtn.addEventListener('click', (e) => {
+    if (parseInt(quantity.innerText) > 1) {
+        quantity.innerText = parseInt(quantity.innerText) - 1
+    }
+   });
 
-        })
-    });
+   incDtn.addEventListener('click', (e) => {
+    quantity.innerText = parseInt(quantity.innerText) + 1
+   });
+
 
     addToCartBtn.addEventListener('click', () => {
         let productsAdded = document.querySelectorAll('.cart__product')
